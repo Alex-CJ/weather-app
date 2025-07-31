@@ -1,4 +1,4 @@
-import Weather from './components/weather.tsx'
+import Weather from './components/Weather.tsx'
 
 export default function App() {
   return (
