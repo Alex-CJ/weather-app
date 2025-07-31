@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
-import "./weather.css";
+import "./Weather.css";
 import clearIcon from "../assets/clear.png";
 import cloudIcon from "../assets/cloud.png";
 import drizzleIcon from "../assets/drizzle.png";
