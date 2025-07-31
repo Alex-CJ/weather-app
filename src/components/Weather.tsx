@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import "./weather.css";
 import clearIcon from "../assets/clear.png";
 import cloudIcon from "../assets/cloud.png";
@@ -25,7 +19,7 @@ interface WeatherDataTypes {
 // interface WeatherDataAPITypes{
 
 // }
-const Weather: React.FC = () => {
+export default function Weather() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [weatherData, setWeatherData] = useState<WeatherDataTypes | null>({
     humidity: 0,
@@ -77,8 +71,8 @@ const Weather: React.FC = () => {
         console.log(data);
         const icon = allIcons[data.weather[0].icon] || clearIcon;
         setWeatherData({
-          humidity: Number(data.main.humidity),
-          windSpeed: Number(data.wind.speed),
+          humidity: data.main.humidity,
+          windSpeed: data.wind.speed,
           temperature: Math.floor(data.main.temp),
           location: data.name,
           icon: icon,
@@ -98,7 +92,15 @@ const Weather: React.FC = () => {
   return (
     <div className="weather">
       <div className="search-bar">
-        <input ref={inputRef} type="text" placeholder="Search" />
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          onKeyDown={(e) => {
+            if (e.key === "Enter")
+              search(inputRef.current ? inputRef.current.value : "");
+          }}
+        />
         <img
           src={searchIcon}
           alt=""
@@ -136,6 +138,4 @@ const Weather: React.FC = () => {
       )}
     </div>
   );
-};
-
-export default Weather;
+}

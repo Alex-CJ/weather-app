@@ -1,7 +1,6 @@
-import React from 'react'
-import Weather from './components/weather'
+import Weather from './components/Weather.tsx'
 
-const App: React.FC = () => {
+export default function App() {
   return (
     <div className='app'>
       <Weather />
@@ -9,5 +8,5 @@ const App: React.FC = () => {
   )
 }
 
-export default App;
+
 
