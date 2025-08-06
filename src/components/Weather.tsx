@@ -84,8 +84,8 @@ interface WeatherData {
 export default function Weather() {
   const cities = [
     { name: "London" },
-    { name: "Chișinău" },
-    { name: "Bucharest" },
+    { name: "Beijing" },
+    { name: "Dubai" },
     { name: "New York", searching: true },
   ];
 
@@ -221,11 +221,27 @@ export function SearchBar({ search }: SearchBarTypes) {
             }`
           );
           const data = await response.json();
+
+          if (
+            !data.results ||
+            !data.results[0] ||
+            !data.results[0].components
+          ) {
+            console.log("No geolocation data found.");
+            return;
+          }
+
           console.log("data", data);
+
           const components = data.results[0].components;
           console.log(components);
 
-          const cityName: string = components.city;
+          const cityName: string =
+            components.city ||
+            components.town ||
+            components.village ||
+            components.county ||
+            "New York";
 
           console.log(cityName);
           search(cityName);
