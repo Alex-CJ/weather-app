@@ -170,7 +170,7 @@ export function WeatherDisplay({
       <p className="feelsLike">
         Feels like {weatherData ? weatherData.feelsLike : "--"}°C
       </p>
-      <p className="location">{weatherData.location ?? "Unknown"}</p>
+      <p className="location">{weatherData.location ?? ""}</p>
       <div className="weather-data">
         <div className="col">
           <img src={humidityIcon} alt="" width={26} height={22} />
