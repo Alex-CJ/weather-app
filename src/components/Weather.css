@@ -1,9 +1,25 @@
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+    padding: 24px;
+
+    @media screen and (min-width: 720px) {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-auto-rows: 1fr;
+    }
+}
+
 .weather{
     place-self:center;
     padding:40px;
     border-radius: 10px;
     background-image: linear-gradient(45deg, #2f4680, #500ae4);
+    display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
     align-items: center;
     text-align: center;
 }
@@ -11,7 +27,7 @@
 .search-bar{
     display: flex;
     align-items: center;
-    gap: 12px
+    gap: 12px;
 }
 
 .search-bar input{
@@ -34,7 +50,6 @@
 }
 
 .weather-icon{
-    width: 150px;
     margin: 30px 0;
 
 }
@@ -48,4 +63,10 @@
 .location{
     color: #fff;
     font-size: 40px;
+}
+
+.feelsLike{
+    font-size: 15px;
+    color: #fff;
+    line-height:1;
 }
